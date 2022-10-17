@@ -53,13 +53,20 @@ yourself](https://github.com/lukasmartinelli/pgfutter/releases/latest).
 1. Build image:
 
 ```bash
-docker build --compress --tag laurocesar/pgflutter:latest .
+docker build --compress --tag laurocesar/pgfutter:latest .
+```
+
+Push image:
+
+```bash
+docker login
+docker push laurocesar/pgfutter:latest
 ```
 
 2. Run:
 
 ```shell
-docker run --rm laurocesar/pgflutter:latest --help
+docker run --rm laurocesar/pgfutter:latest --help
 ```
 
 #### Manually build app
