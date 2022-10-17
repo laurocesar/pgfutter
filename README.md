@@ -39,7 +39,7 @@ chmod +x pgfutter
 ./pgfutter --help
 ```
 
-**Install from source**
+### Install from source
 
 ```bash
 go get github.com/lukasmartinelli/pgfutter
@@ -47,6 +47,37 @@ go get github.com/lukasmartinelli/pgfutter
 
 If you are using Windows or 32-bit architectures you need to [download the appropriate binary
 yourself](https://github.com/lukasmartinelli/pgfutter/releases/latest).
+
+### Install in a Docker container
+
+1. Build image:
+
+```bash
+docker build --compress --tag laurocesar/pgflutter:latest .
+```
+
+2. Run:
+
+```shell
+docker run --rm laurocesar/pgflutter:latest --help
+```
+
+#### Manually build app
+
+Use a [Golang container](https://hub.docker.com/_/golang) in order to build `pgfutter` manually:
+
+```bash
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go mod init pgfutter
+
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go get github.com/urfave/cli
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go get github.com/lib/pq
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go get github.com/kennygrant/sanitize
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go get github.com/cheggaaa/pb
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go get github.com/JensRantil/go-csv
+
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go build -v
+```
+
 
 ## Import CSV
 
