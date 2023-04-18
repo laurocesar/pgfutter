@@ -69,6 +69,16 @@ docker push laurocesar/pgfutter:latest
 docker run --rm laurocesar/pgfutter:latest --help
 ```
 
+### Muiltarch image
+
+```bash
+docker buildx create --name sll3builder --use
+docker buildx use sll3builder
+docker login
+docker buildx build --platform linux/amd64,linux/arm64 -t laurocesar/pgfutter:latest --push .
+docker buildx imagetools inspect laurocesar/pgfutter:latest
+```
+
 #### Manually build app
 
 Use a [Golang container](https://hub.docker.com/_/golang) in order to build `pgfutter` manually:
