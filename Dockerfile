@@ -7,7 +7,7 @@ ADD . /app
 RUN go build -v
 
 
-FROM postgres:14.5
+FROM postgres:14.7
 
 RUN mkdir /app
 
